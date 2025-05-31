@@ -1,0 +1,19 @@
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="task-form">
+    <h2>@if (task) { Editar tarea } @else { Nueva tarea }</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput rows="3" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      @if (task) { Actualizar } @else { Agregar }
+    </button>
+  </form>
+</mat-card>
