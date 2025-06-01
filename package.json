@@ -8,6 +8,7 @@
     "build:prod": "ng build --configuration production",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
+    "deploy": "ng build --configuration production && firebase deploy",
     "test": "ng test",
     "lint": "ng lint"
   },

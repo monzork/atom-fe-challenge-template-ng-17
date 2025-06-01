@@ -1,36 +1,91 @@
-# ATOM FE CHALLENGE TEMPLATE - ANGULAR
+# 🧠 Angular Task Manager
 
-Este proyecto es una plantilla con lo necesario para comenzar a desarrollar el front-end de la aplicación de la prueba técnica de Atom. Se base en Angular con la versión 17.3.6.
-Se ha realizado la instalación y configuración de varias dependencias necesarias para el desarrollo de la aplicación, como por ejemplo: Angular Material.
+This project is a solution to the Fullstack Technical Challenge, built with **Angular 17**, using standalone components, Angular Material for UI, and deployed on **Firebase Hosting and Functions**.
 
-## Instrucciones
-Siéntete libre de clonar este repositorio y utilizarlo como base para el desarrollo de la aplicación. Sigue las indicates de la prueba técnica para completar la aplicación y desarrolla como más te sientas cómodo.
+---
 
-De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
+## 🚀 Tech Stack
 
-## Comentarios sobre el desarrollo
-...
+- 🔧 [Angular 17](https://angular.io/)
+- 🎨 [Angular Material](https://material.angular.io/)
+- ☁️ [Firebase Hosting](https://firebase.google.com/docs/hosting)
+- 🔥 [Firebase Functions](https://firebase.google.com/docs/functions)
+- 🧪 Karma & Jasmine (Unit Testing)
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🗂️ Project Structure
+src/
+├── app/
+│ ├── core/
+│ │ └── features/
+│ │ ├── auth/ # Email-based login
+│ │ └── tasks/ # Task CRUD operations
+│ └── environments/ # dev & prod environment configs
+├── assets/
+└── index.html
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 📋 Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+✅ Email-based login (creates user if not found)  
+✅ Create, update, delete tasks  
+✅ Mark tasks as completed  
+✅ Backend powered by Firebase Functions  
+✅ Route protection using `authGuard`  
+✅ Responsive design with Angular Material
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🔧 Development Scripts
 
-## Running end-to-end tests
+```bash
+# Install dependencies
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Start local dev server
+ng serve
 
-## Further help
+# Build production version
+ng build --configuration production
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Run unit tests
+ng test
+
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/api'
+};
+
+
+# Build for production
+ng build --configuration production
+
+# Initialize hosting (first time only)
+firebase init hosting
+
+# Deploy
+firebase deploy
+
+Ensure firebase.json contains:
+
+"public": "dist/<your-app-name>"
+
+🧪 Unit Test Coverage
+
+Components covered by tests:
+
+    ✅ task-form.component
+
+    ✅ task-list.component
+
+    ✅ login-form.component
+
+    ✅ login-page.component
+
+    ✅ auth.guard
+
+    ✅ task.service and auth.service
