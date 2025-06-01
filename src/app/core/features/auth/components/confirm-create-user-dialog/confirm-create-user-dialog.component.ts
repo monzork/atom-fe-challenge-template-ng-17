@@ -10,8 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
     <h2 mat-dialog-title>Usuario no encontrado</h2>
     <mat-dialog-content>¿Deseas crear un nuevo usuario con este correo?</mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close="false">Cancelar</button>
-      <button mat-button color="primary" mat-dialog-close="true">Crear</button>
+      <button mat-button [mat-dialog-close]=false>Cancelar</button>
+      <button mat-button color="primary" [mat-dialog-close]=true>Crear</button>
     </mat-dialog-actions>
   `
 })
