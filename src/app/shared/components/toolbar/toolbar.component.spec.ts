@@ -3,16 +3,16 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { LoginPageComponent } from './login-page.component';
+import { AppToolbarComponent } from './toolbar.component';
 
-describe('LoginPageComponent', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
+describe('ToolbarComponent', () => {
+  let component: AppToolbarComponent;
+  let fixture: ComponentFixture<AppToolbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        LoginPageComponent,
+        AppToolbarComponent,
         HttpClientTestingModule,
         MatDialogModule,
         NoopAnimationsModule
@@ -20,7 +20,7 @@ describe('LoginPageComponent', () => {
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(LoginPageComponent);
+    fixture = TestBed.createComponent(AppToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

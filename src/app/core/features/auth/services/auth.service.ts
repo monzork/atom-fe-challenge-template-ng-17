@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, catchError, of, switchMap, throwError } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  baseUrl = 'https://api-wdqfge2wtq-uc.a.run.app/api/users';
+  private readonly baseUrl = `${environment.apiUrl}/users`;
   constructor(private http: HttpClient) { }
 
-  getUserByEmail(email: string): Observable<any | null> {
-    return this.http.get<any>(`${this.baseUrl}/users?email=${email}`);
+  login(email: string): Observable<any | null> {
+    return this.http.post<any>(`${this.baseUrl}/login`, { email }).pipe(
+      catchError(error => {
+        if (error.status === 404) {
+
+          console.error('Login error:', error);
+          return of(null);
+        }
+
+        return throwError(() => new Error('Login failed: ' + error.message));
+      }));
   }
 
   createUser(email: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/users`, { email });
+    return this.http.post(`${this.baseUrl}`, { email });
   }
 
   loginOrCreate(email: string): Observable<any> {
-    return this.getUserByEmail(email).pipe(
+    return this.login(email).pipe(
       switchMap(user => user ? of(user) : this.createUser(email))
     );
   }

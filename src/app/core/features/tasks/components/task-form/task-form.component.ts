@@ -6,18 +6,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Task } from '../../models/task.model';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [MatInputModule, CommonModule, MatCardModule, FormsModule, ReactiveFormsModule, MatFormFieldModule],
+  imports: [MatButtonModule, MatInputModule, CommonModule, MatCardModule, FormsModule, ReactiveFormsModule, MatFormFieldModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'
 })
 
 export class TaskFormComponent implements OnChanges {
   @Input() task: Task | null = null;
-  @Output() create = new EventEmitter<{ title: string; description?: string }>();
+  @Output() create = new EventEmitter<{ title: string; description: string }>();
   @Output() update = new EventEmitter<Task>();
 
   form: FormGroup;
